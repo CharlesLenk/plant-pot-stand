@@ -9,6 +9,7 @@ bar_size = default_bar_size();
 
 stand_inner_width = pot_d;
 stand_top_bar_length = top_bar_length(pot_h);
+top_bar_inner_width = inner_width(pot_d);
 stand_corner_r = 0;
 
 assembly(
@@ -16,6 +17,7 @@ assembly(
 	pot_h,
 	stand_inner_width,
 	stand_top_bar_length,
+    top_bar_inner_width,
 	bar_size,
 	stand_corner_r,
 	show_pot = true
@@ -26,6 +28,7 @@ module assembly(
 	pot_h,
 	inner_width,
 	top_bar_length,
+    top_bar_inner_width,
 	bar_size,
 	corner_r,
 	show_pot = true
@@ -44,7 +47,7 @@ module assembly(
 				stand(
 					pot_d,
 					pot_h,
-					inner_width,
+					top_bar_inner_width,
 					top_bar_length,
 					bar_size,
 					corner_r = corner_r,
