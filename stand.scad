@@ -7,7 +7,7 @@ default_bar_size = 7.5;
 function default_pot_d() = default_pot_d;
 function default_pot_h() = default_pot_h;
 function default_bar_size() = default_bar_size;
-function top_bar_length(pot_h) = 0.85 * top_bar_length;
+function top_bar_length(pot_h) = 0.85 * pot_h;
 function bottom_bar_length(top_bar_length) = 0.3 * top_bar_length;
 
 module stand(
@@ -19,7 +19,8 @@ module stand(
     corner_r = 0,
     is_top = true
 ) {
-    inner_width = is_undef(inner_width) ? pot_d : inner_width;
+    width_margin = 1;
+    inner_width = is_undef(inner_width) ? pot_d + width_margin: inner_width;
     top_bar_length = is_undef(top_bar_length) ? top_bar_length(pot_h) : top_bar_length;
     bar_size = is_undef(bar_size) ? default_bar_size : bar_size;
 
