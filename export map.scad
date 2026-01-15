@@ -3,8 +3,8 @@ use <pot.scad>
 use <stand.scad>
 
 name = "";
-pot_d = 110;
-pot_h = 110;
+pot_d = default_pot_d();
+pot_h = default_pot_h();
 bar_size = default_bar_size();
 corner_r = 0;
 

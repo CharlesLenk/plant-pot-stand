@@ -2,12 +2,13 @@ include <openscad-utilities/common.scad>
 use <openscad-utilities/vessel.scad>
 use <stand.scad>
 
-pot_d = 110;
-pot_h = 110;
+name = "";
+pot_d = default_pot_d();
+pot_h = default_pot_h();
+bar_size = default_bar_size();
 
 stand_inner_width = pot_d;
 stand_top_bar_length = top_bar_length(pot_h);
-bar_size = default_bar_size();
 stand_corner_r = 0;
 
 assembly(
