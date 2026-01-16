@@ -1,6 +1,4 @@
-from scad_export.export import export
-from scad_export.exportable import Folder, Model
-
+from scad_export.exportable import Folder, Model, export
 
 files=Folder(
     name='scad_export/plant_pot_stand',
