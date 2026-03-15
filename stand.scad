@@ -1,7 +1,7 @@
 include <openscad-utilities/common.scad>
 
 default_pot_d = 125;
-default_pot_h = 115;
+default_pot_h = 0.9 * default_pot_d;
 default_bar_size = 7.5;
 
 function default_pot_d() = default_pot_d;
