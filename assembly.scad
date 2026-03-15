@@ -5,7 +5,7 @@ use <stand.scad>
 name = "";
 pot_d = default_pot_d();
 pot_h = default_pot_h();
-bar_size = default_bar_size();
+bar_size = default_bar_size(pot_d);
 
 stand_inner_width = pot_d;
 stand_top_bar_length = top_bar_length(pot_h);
