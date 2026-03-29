@@ -11,17 +11,9 @@ function top_bar_length(pot_h) = 0.85 * pot_h;
 function inner_width(pot_d) = pot_d + 1;
 function bottom_bar_length(top_bar_length) = 0.3 * top_bar_length;
 
-stand(default_pot_d, default_pot_h, is_top = false);
-
-
-
-module snap_cylinders(bar_size, is_cut = false) {
-	snap_d = 3 + (is_cut ? 0.3 : 0);
-	snap_depth = 0.5;
-	reflect([1, 0, 0])
-		translate([bar_size/2 + snap_d/2 - snap_depth, 0])
-			cylinder(d = snap_d, h = bar_size, center = true);
-}
+stand(default_pot_d, default_pot_h, is_top = true);
+translate([default_pot_d + 2 * default_bar_size + 15, 0])
+	stand(default_pot_d, default_pot_h, is_top = false);
 
 module stand(
     pot_d,
@@ -97,4 +89,12 @@ module stand(
 			rotate([-90, 0, 0])
 				rounded_cube([bar_size, bar_size, length], d = edge_d, top_d = 0, bottom_d = edge_d);
 	}
+}
+
+module snap_cylinders(bar_size, is_cut = false) {
+	snap_d = 3 + (is_cut ? 0.3 : 0);
+	snap_depth = 0.5;
+	reflect([1, 0, 0])
+		translate([bar_size/2 + snap_d/2 - snap_depth, 0])
+			cylinder(d = snap_d, h = bar_size, center = true);
 }
