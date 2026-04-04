@@ -11,8 +11,6 @@ A 3D printable stand for plant pots. Similar to traditional wooden designs.
 This model is designed to be printed on a standard consumer grade FDM printer with a 0.4mm nozzle and 0.2mm layer
 height. PLA filament works well for this model.
 
-The model in the project photos was printed with Atomic Filament Metallic Bronze.
-
 ## Assembly
 
 1. Align the notches on the top and bottom pieces of the stand.
@@ -22,7 +20,11 @@ The model in the project photos was printed with Atomic Filament Metallic Bronze
 
 ## Dimensions
 
+By default, the export script will generate a stand for pots of 85mm, 125mm, and 175mm diameter. The diameter can be
+adjusted in the export script, or directly by updating `default_pot_d` in `stand.scad`.
 
+By default, the height of the stand is set dynamically based on the diameter of the pot it holders, but can be changed
+in both the export script, or by updating `default_pot_d` in `stand.scad`.
 
 ## Models in this Project
 
