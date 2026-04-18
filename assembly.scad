@@ -3,7 +3,6 @@ use <openscad-utilities/vessel.scad>
 use <openscad-utilities/arrow.scad>
 use <stand.scad>
 
-name = "";
 pot_d = default_pot_d();
 pot_h = default_pot_h();
 bar_size = default_bar_size(pot_d);
