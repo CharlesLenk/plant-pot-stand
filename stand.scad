@@ -1,15 +1,19 @@
 include <openscad-utilities/common.scad>
 
-default_pot_d = 125;
-default_pot_h = 115;
-default_bar_size = 7.5;
+default_pot_d = 85;
+default_pot_h = 0.9 * default_pot_d;
+default_bar_size = default_bar_size(default_pot_d);
 
 function default_pot_d() = default_pot_d;
 function default_pot_h() = default_pot_h;
-function default_bar_size() = default_bar_size;
+function default_bar_size(pot_d) = 0.09 * pot_d;
 function top_bar_length(pot_h) = 0.85 * pot_h;
 function inner_width(pot_d) = pot_d + 1;
 function bottom_bar_length(top_bar_length) = 0.3 * top_bar_length;
+
+stand(default_pot_d, default_pot_h, is_top = true);
+translate([default_pot_d + 2 * default_bar_size + 15, 0])
+	stand(default_pot_d, default_pot_h, is_top = false);
 
 module stand(
     pot_d,
@@ -22,7 +26,7 @@ module stand(
 ) {
     inner_width = is_undef(inner_width) ? inner_width(pot_d) : inner_width;
     top_bar_length = is_undef(top_bar_length) ? top_bar_length(pot_h) : top_bar_length;
-    bar_size = is_undef(bar_size) ? default_bar_size : bar_size;
+    bar_size = is_undef(bar_size) ? default_bar_size(pot_d) : bar_size;
 
 	edge_d = 2;
     bottom_length = bottom_bar_length(top_bar_length);
@@ -43,6 +47,12 @@ module stand(
 				fix_preview()
                     cube([bar_size, bar_size + notch_offset, bar_size]);
 			}
+			translate([0, (is_top ? 1 : -1) * bar_size/2]) {
+				rotate([0, 90, 0]) snap_cylinders(bar_size, is_cut = true);
+			}
+		}
+		translate([0, (is_top ? -1 : 1) * bar_size/2]) {
+			snap_cylinders(bar_size);
 		}
 	}
 
@@ -79,4 +89,13 @@ module stand(
 			rotate([-90, 0, 0])
 				rounded_cube([bar_size, bar_size, length], d = edge_d, top_d = 0, bottom_d = edge_d);
 	}
+}
+
+module snap_cylinders(bar_size, is_cut = false) {
+    cut_offset = is_cut ? 0.8 : 0;
+	snap_d = 3;
+	snap_depth = 0.2;
+	reflect([1, 0, 0])
+		translate([bar_size/2 + snap_d/2 - snap_depth, 0])
+			cylinder(d = snap_d + cut_offset, h = bar_size, center = true);
 }
