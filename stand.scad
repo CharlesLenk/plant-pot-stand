@@ -92,7 +92,7 @@ module stand(
 }
 
 module snap_cylinders(bar_size, is_cut = false) {
-    cut_offset = is_cut ? 0.8 : 0;
+    cut_offset = is_cut ? 1 : 0;
 	snap_d = 3;
 	snap_depth = 0.2;
 	reflect([1, 0, 0])
