@@ -1,6 +1,6 @@
 from scad_export import Folder, Model, export
 
-sizes = [71, 85, 125, 175]
+sizes = [85, 125, 175]
 
 files=Folder(
     name='scad_export/plant_pot_stand',
