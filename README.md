@@ -2,9 +2,10 @@
 
 A 3D printable stand for plant pots. Similar to traditional wooden designs.
 
+![](images/with_pot.jpg)
 |||
 |-|-|
-|![](images/image.jpg)|![](images/image.jpg)|
+|![](images/disassembled.jpg)|![](images/assembled.jpg)|
 
 ## Printing
 
