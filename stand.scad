@@ -36,6 +36,7 @@ module stand(
         max(3 * bar_size, min(inner_width - 2 * corner_r, inner_width - 2 * bottom_corner_r));
     notch_offset = 0.5;
     notch_width = bar_size + 0.25;
+    notch_cut_height = bar_size + 0.2;
 
 	translate([0, -bar_size - bottom_length]) {
 		difference() {
@@ -44,9 +45,9 @@ module stand(
 				rotate([0, 180, 0]) leg();
 				rounded_cube([inner_cube_width, 2 * bar_size, bar_size], d = edge_d, center = true);
 			}
-			translate([-notch_width/2, is_top ? -bar_size - notch_offset/2 : -notch_offset/2, -bar_size/2]) {
+			translate([-notch_width/2, is_top ? -bar_size - notch_offset/2 : -notch_offset/2, -notch_cut_height/2]) {
 				fix_preview()
-                    cube([notch_width, bar_size + notch_offset, bar_size]);
+                    cube([notch_width, bar_size + notch_offset, notch_cut_height]);
 			}
 			translate([0, (is_top ? 1 : -1) * bar_size/2]) {
 				rotate([0, 90, 0]) snap_cylinders(bar_size, is_cut = true);
